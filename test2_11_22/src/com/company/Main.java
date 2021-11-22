@@ -24,9 +24,11 @@ public class Partition {
         ListNode cur = head;
         while (cur != null) {
             if (cur.val < x) {
+                //情况一：第一个位置为空时（bs为空）
                 if (bs == null) {
                     bs = cur;
                     be = cur;
+                    //情况二：第一个位置不为空（bs不为空）
                 }else {
                     be.next = cur;
                     be = be.next;
@@ -42,10 +44,12 @@ public class Partition {
             }
             cur = cur.next;
         }
+        //当所有值大于x时（before标志的链表为空）
         if (bs == null) {
             return as;
         }
         be.next = as;
+        //当最后一个结点不为空时
         if (as != null) {
             ae.next = null;
         }
