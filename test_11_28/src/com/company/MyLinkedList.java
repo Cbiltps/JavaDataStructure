@@ -188,19 +188,32 @@ public class MyLinkedList {
 
 
     public void clear() {
-        ListNode cur = head;
-        while (cur != null) {
-            ListNode curNext = head.next;
-            if(cur.next != null) {
-                cur.next = null;
-            }
-            if(cur.prev != null) {
-                cur.prev = null;
-            }
-            cur = cur.next;
+//        ListNode cur = head;
+//        while (cur != null) {
+//            ListNode curNext = head.next;
+//            if(cur.next != null) {
+//                cur.next = null;
+//            }
+//            if(cur.prev != null) {
+//                cur.prev = null;
+//            }
+//            cur = cur.next;
+//        }
+//        head = null;
+//        last = null;
+//        System.out.println("null");
+
+        //上面是自己写的，看看下面的
+        while (head != null) {
+            ListNode headNext = head.next;
+            head.next = null;
+            head.prev = null;
+            head = headNext;
         }
-        head = null;
         last = null;
-        System.out.println("null");
+        System.out.println("All Null!");
     }
 }
+
+//注意；检测为空 可以用一个前面讲过的命令 jps jmap -histo:live xxxx > c:\\ xxx.txt
+//看看ListNode的实例个数是不是少了！
