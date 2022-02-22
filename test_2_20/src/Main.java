@@ -32,6 +32,7 @@
         return this.elem[pos];
     }
 
+
     /*public <T> T[] getArray(int size) {
         T[] genericArray = new T[size]; // suppose this is allowed
         return genericArray;
