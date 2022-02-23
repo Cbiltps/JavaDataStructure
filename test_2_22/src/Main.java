@@ -44,5 +44,6 @@ public class Main {
         String[] strings = new String[10];
         Object o1 = new String[10];
         Object[] o2 = new String[10];
+        /*这里是有一个简书的博客，写的很好记得去回顾！*/
     }
 }
