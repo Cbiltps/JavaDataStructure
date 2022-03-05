@@ -1,20 +1,19 @@
-import javax.swing.tree.TreeNode;
 
-// 下面的创建方法不是常用的创建方式 比较简单 等到后期的时候 会慢慢的了解
-class BTNode {
+// 下面的创建方法不是常用的创建方式 比较简单 等到后期的时候 才会展示真正的创建方式
+class TreeNode {
     public char val;
-    public BTNode left;// 左孩子的引用
-    public BTNode right;// 右孩子的引用
+    public TreeNode left;// 左孩子的引用
+    public TreeNode right;// 右孩子的引用
 
-    public BTNode(char val) {
+    public TreeNode(char val) { // 构造方法
         this.val = val;
     }
 }
 
 public class BinaryTree {
-//    public BTNode root;// 二叉树的根节点
+//    public TreeNode root;// 这个表示的是二叉树的根节点
 
-    public TreeNode createTree() {
+    public TreeNode createTree() { // 二叉树就是这样打印出来的
         TreeNode A = new TreeNode('A');
         TreeNode B = new TreeNode('B');
         TreeNode C = new TreeNode('C');
@@ -31,5 +30,15 @@ public class BinaryTree {
         C.right = G;
         E.right = H;
         return A;
+    }
+
+    //前序遍历
+    void preOrder(TreeNode root) {
+        if(root == null) {
+            return;
+        }
+        System.out.print(root.val+" ");
+        preOrder(root.left);
+        preOrder(root.right);
     }
 }
