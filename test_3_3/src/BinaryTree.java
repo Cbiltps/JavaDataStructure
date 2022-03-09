@@ -15,6 +15,94 @@ class TreeNode {
 public class BinaryTree {
 //    public TreeNode root;// 这个表示的是二叉树的根节点
 
+    /*这一部分是 实现二叉树的操作！*/
+
+    /**
+     * 获取二叉树结点的个数 遍历思想实现
+     */
+    int count = 0;// 计数器
+    int size(TreeNode root) {
+        preOrderForSize(root);
+        return count;
+    }
+
+    void preOrderForSize(TreeNode root) {
+        if(root == null) {
+            return;
+        }else {
+            count++;
+        }
+        preOrderForSize(root.left);
+        preOrderForSize(root.right);
+    }
+
+    // 这样子实现也是可以的 当时我觉的 我写的代码更具有观赏性
+    /*int count = 0;
+    int size1(TreeNode root) {
+        if(root == null) {
+            return 0;
+        }
+        count++;
+        size1(root.left);
+        size1(root.right);
+        return count;
+    }*/
+
+    /**
+     * 获取二叉树结点的个数 子问题思想实现 我去居然这么的简单 真的时没想到
+     * @return
+     */
+    int otherSize(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return otherSize(root.left) + otherSize(root.right) + 1;
+    }
+
+    /**
+     * 获取叶子结点的个数
+     *
+     * 遍历思想实现
+     *
+     * @param root
+     * @return
+     */
+    int LeafNodeCount = 0;// 如果下面的方法是void的时候，定义这个变量的时候可以是静态的，便于通过类名直接访问
+    int getLeafNodeCount(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null && root.right == null) {
+            LeafNodeCount++;
+        }
+        getLeafNodeCount(root.left);
+        getLeafNodeCount(root.right);
+        return LeafNodeCount;
+    }
+
+    //子问题
+    int otherGetLeafNodeCount(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+        return otherGetLeafNodeCount(root.left) + otherGetLeafNodeCount(root.right);
+    }
+
+    /**
+     * 获取第K层的结点数
+     *
+     * 前面是先写完遍历的 现在直接写子问题的方法
+     *
+     * @param root
+     * @return
+     */
+    int getKLevelNodeCount(TreeNode root) {
+        return 1;
+    }
+
     public TreeNode createTree() { // 二叉树就是这样打印出来的
         TreeNode A = new TreeNode('A');
         TreeNode B = new TreeNode('B');
