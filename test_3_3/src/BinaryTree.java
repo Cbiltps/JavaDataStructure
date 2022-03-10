@@ -99,8 +99,70 @@ public class BinaryTree {
      * @param root
      * @return
      */
-    int getKLevelNodeCount(TreeNode root) {
-        return 1;
+    int getKLevelNodeCount(TreeNode root, int layer) {
+        if (root == null || layer <= 0) { // layer <= 0 的意思就是从第0层开始
+            return 0;
+        }
+        if (layer == 1) {
+            return 1;
+        }
+        return getKLevelNodeCount(root.left, layer-1) + getKLevelNodeCount(root.right, layer-1);
+    }
+
+    /**
+     * 获取二叉树的高度 子问题思路
+     *
+     * 注意:这个题在LeetCode上是有问题的，不能直接返回，会超出时间限制，主要是递归的次数太多
+     * 解决方法就是先创建变量存储起来！
+     *
+     * 链接：https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/submissions/
+     *
+     * 时间复杂度：O(n)
+     * 空间复杂度：log以 2 为底的 n
+     *
+     * @param root
+     * @return
+     */
+    int getHeight(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftHeight = getHeight(root.left);
+        int rightHeight = getHeight(root.right);
+        return leftHeight > rightHeight ? leftHeight+1 : rightHeight+1;
+//        return getHeight(root.left) > getHeight(root.right) ? getHeight(root.left)+1 : getHeight(root.right)+1;
+    }
+
+    /**
+     * 检测值为value的元素是否存在
+     * @param root
+     * @param value
+     * @return
+     */
+    TreeNode nodeFind(TreeNode root, char value) {
+        if (root == null) {
+            return null;
+        }
+
+        if (root.val == value) {
+            return root;
+        }
+
+        TreeNode ret = nodeFind(root.left, root.left.val);
+        if (ret != null) {
+            return ret;
+        }
+
+        ret = nodeFind(root.right, root.right.val);
+        if (ret != null) {
+            return ret;
+        }
+
+        return null;// 没有找到返回null
+    }
+
+    boolean isCompleteTree(TreeNode root) {
+        return true;
     }
 
     public TreeNode createTree() { // 二叉树就是这样打印出来的
