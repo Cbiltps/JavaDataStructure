@@ -15,7 +15,14 @@ public class Main {
         System.out.println(binaryTree.otherGetLeafNodeCount(root));// 获取叶子数 子问题
         System.out.println(binaryTree.getKLevelNodeCount(root, 3));// 获取第K层的结点数
         System.out.println(binaryTree.getHeight(root));// 获取树的高度
-        System.out.println(binaryTree.nodeFind(root, 'E').val);
 
+
+        try {
+            TreeNode ret = binaryTree.nodeFind(root, 'M');
+            System.out.println(ret.val);
+        }catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("没有这个结点！");
+        }
     }
 }
