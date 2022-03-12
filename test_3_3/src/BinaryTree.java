@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 // 下面的创建方法不是常用的创建方式 比较简单 等到后期的时候 才会展示真正的创建方式
 class TreeNode {
@@ -36,7 +38,7 @@ public class BinaryTree {
         preOrderForSize(root.right);
     }
 
-    // 这样子实现也是可以的 当时我觉的 我写的代码更具有观赏性
+    // 这样子实现也是可以的 当但是我觉的 我写的代码更具有观赏性
     /*int count = 0;
     int size1(TreeNode root) {
         if(root == null) {
@@ -148,20 +150,48 @@ public class BinaryTree {
             return root;
         }
 
-        TreeNode ret = nodeFind(root.left, root.left.val);
+        TreeNode ret = nodeFind(root.left, value);
         if (ret != null) {
             return ret;
         }
 
-        ret = nodeFind(root.right, root.right.val);
+        ret = nodeFind(root.right, value);
         if (ret != null) {
             return ret;
         }
-
         return null;// 没有找到返回null
     }
 
+    /**
+     * 判断一个树是不是完全二叉树
+     *
+     * 这个方法使用非递归比较的好写：
+     * 创建一个队列，判断结点不为空就把结点放进队列,之后弹出队列的元素，把这个元素的左右结点放进队队列，
+     * 最后队列的元素都是空的时候就是完全二叉树，反之相反
+     *
+     * @param root
+     * @return
+     */
     boolean isCompleteTree(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);// 把第一个结点放进去
+        while (queue.peek() != null) {
+            TreeNode cur = queue.poll();
+            if (cur != null) {
+                queue.offer(cur.left);
+                queue.offer(cur.right);
+            }else {
+                break;
+            }
+        }
+        while (!queue.isEmpty()) {
+            if (queue.poll() != null) {
+                return false;
+            }
+        }
         return true;
     }
 

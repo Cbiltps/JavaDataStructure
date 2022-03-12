@@ -16,13 +16,15 @@ public class Main {
         System.out.println(binaryTree.getKLevelNodeCount(root, 3));// 获取第K层的结点数
         System.out.println(binaryTree.getHeight(root));// 获取树的高度
 
-
         try {
-            TreeNode ret = binaryTree.nodeFind(root, 'M');
+//        System.out.println(binaryTree.nodeFind(root, 'E').val);// 下面的样子写也是可以的
+            TreeNode ret = binaryTree.nodeFind(root, 'E');
             System.out.println(ret.val);
         }catch (NullPointerException e) {
             e.printStackTrace();
             System.out.println("没有这个结点！");
         }
+
+        System.out.println(binaryTree.isCompleteTree(root));
     }
 }
