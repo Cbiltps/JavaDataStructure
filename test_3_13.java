@@ -1,5 +1,5 @@
 
-//https://leetcode-cn.com/problems/same-tree/submissions/
+//LeetCode：https://leetcode-cn.com/problems/same-tree/submissions/
 
 class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
