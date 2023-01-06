@@ -18,8 +18,11 @@ https://leetcode.cn/problems/subtree-of-another-tree/
  *     }
  * }
  */
- 
+
+// 整体的时间复杂度:O(m*n), m和n为节点数
+// 关于时间复杂度的解析看LeetCode的解析!
 class Solution {
+    // isSameTree 的时间复杂度:O( min(m, n) ), m和n为节点数
     private boolean isSameTree(TreeNode p, TreeNode q) {
         if (p == null && q != null || p != null && q == null) {
             return false;
