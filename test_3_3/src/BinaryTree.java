@@ -245,6 +245,69 @@ public class BinaryTree {
         System.out.print(root.val+" ");
     }
 
+    /**
+     * 层序遍历
+     * @param root
+     */
+    void levelOrder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);// 把第一个结点放进去
+
+        TreeNode cur = null;
+        while (!queue.isEmpty()) {
+            cur = queue.poll();
+            System.out.print(cur.val + " ");
+            if (cur.left != null) {
+                queue.offer(cur.left);
+            }
+            if (cur.right != null) {
+                queue.offer(cur.right);
+            }
+        }
+    }
+
+    /**
+     * 层序遍历(以数组形式展示)
+     * https://leetcode.cn/problems/binary-tree-level-order-traversal/submissions/
+     * @param root
+     * @return
+     */
+    public List<List<Character>> levelOrderOfArray(TreeNode root) {
+        List<List<Character>> ret = new ArrayList<>();
+        if (root == null) {
+            return ret;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);// 把第一个结点放进去
+
+        TreeNode cur = null;
+        int size = 0;
+        while (!queue.isEmpty()) {
+            List<Character> list = new ArrayList<>();
+
+            size = queue.size();// 当前层有size个节点
+            while (size != 0) {
+                cur = queue.poll();
+                list.add(cur.val);
+                if (cur.left != null) {
+                    queue.offer(cur.left);
+                }
+                if (cur.right != null) {
+                    queue.offer(cur.right);
+                }
+                size--;
+            }
+            ret.add(list);
+        }
+        return ret;
+    }
+
+
     /*但是，LeetCode上面是有返回值的：
      * 前序遍历：https://leetcode-cn.com/problems/binary-tree-preorder-traversal/submissions/
      * 中序遍历：https://leetcode-cn.com/problems/binary-tree-inorder-traversal/submissions/
@@ -259,14 +322,12 @@ public class BinaryTree {
         if(root == null) {
             return retlist;
         }
-
         retlist.add(root.val);
         // 因为方法是有返回值的 还是接收一下
         List<Character> leftList = preorderTraversal(root.left);
         retlist.addAll(leftList);
         List<Character> rightList = preorderTraversal(root.right);
         retlist.addAll(rightList);
-
         return retlist;
     }
 
@@ -290,6 +351,5 @@ public class BinaryTree {
         postorderTraversal(root.right);
         retlist2.add(root.val);
         return retlist2;
-
     }
 }
