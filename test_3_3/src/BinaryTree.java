@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 // 下面的创建方法不是常用的创建方式 比较简单 等到后期的时候 才会展示真正的创建方式
 class TreeNode {
@@ -244,6 +241,63 @@ public class BinaryTree {
         postOrder(root.right);
         System.out.print(root.val+" ");
     }
+
+
+    /*注意：使用非递归！*/
+    // 前序遍历 非递归
+    void preOrderNor(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                System.out.print(cur.val + " ");
+                cur = cur.left;
+            }
+            TreeNode top = stack.pop();
+            cur = top.right;
+        }
+    }
+
+    // 中序遍历 非递归
+    void inOrderNor(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            TreeNode top = stack.pop();
+            System.out.print(top.val + " ");
+            cur = top.right;
+        }
+    }
+
+    // 后序遍历 非递归
+    void postOrderNor(TreeNode root) {
+        TreeNode cur = root;
+        TreeNode printed = null;
+        Stack<TreeNode> stack = new Stack<>();
+
+        while (cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+
+            TreeNode top = stack.peek();
+            // 如果当前结点的右子树为 null 或者 遍历(打印) 过
+            if (top.right == null || top.right == printed) {
+                stack.pop();
+                System.out.print(top.val + " ");
+                printed = top;// 记录一下最近打印的结点
+            } else {
+                cur = top.right;
+            }
+        }
+    }
+
 
     /**
      * 层序遍历

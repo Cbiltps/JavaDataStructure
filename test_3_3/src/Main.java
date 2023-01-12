@@ -3,11 +3,17 @@ public class Main {
     public static void main(String[] args) {
 	    BinaryTree binaryTree = new BinaryTree();// 实例化对象
         TreeNode root = binaryTree.createTree();// 创建树
-        binaryTree.preOrder(root);// 前序遍历
+        binaryTree.preOrder(root);// 前序遍历(递归)
         System.out.println();
-        binaryTree.inOrder(root);// 中序遍历
+        binaryTree.preOrderNor(root);// 前序遍历(非递归)
         System.out.println();
-        binaryTree.postOrder(root);// 后序遍历
+        binaryTree.inOrder(root);// 中序遍历(递归)
+        System.out.println();
+        binaryTree.inOrderNor(root);// 中序遍历(非递归)
+        System.out.println();
+        binaryTree.postOrder(root);// 后序遍历(递归)
+        System.out.println();
+        binaryTree.postOrderNor(root);// 后序遍历(非递归)
         System.out.println();
         binaryTree.levelOrder(root);// 层序遍历
         System.out.println();
@@ -19,8 +25,9 @@ public class Main {
         System.out.println(binaryTree.getKLevelNodeCount(root, 3));// 获取第K层的结点数
         System.out.println(binaryTree.getHeight(root));// 获取树的高度
 
+        // 查找某个节点
         try {
-//        System.out.println(binaryTree.nodeFind(root, 'E').val);// 下面的样子写也是可以的
+//        System.out.println(binaryTree.nodeFind(root, 'E').val);
             TreeNode ret = binaryTree.nodeFind(root, 'E');
             System.out.println(ret.val);
         }catch (NullPointerException e) {
