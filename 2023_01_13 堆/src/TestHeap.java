@@ -36,6 +36,7 @@ public class TestHeap {
      * 注意:这个方法的时间复杂度为O(n), 具体的过程看下面的链接.
      * https://gitee.com/gaobo1/java-102/blob/master/102-%E6%9D%BF%E4%B9%A6/2022-01-22-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AE%8C+%E5%A0%86.png
      * @param array
+     * @return
      */
     public void createHeap(int[] array) {
         for (int i = 0; i < array.length; i++) {
@@ -101,5 +102,16 @@ public class TestHeap {
             throw new RuntimeException("优先级队列为空!");
         }
         return elem[0];
+    }
+
+    public void heapSort() {
+        int end = usedSize - 1;
+        while (end > 0) {
+            int tmp = elem[0];
+            elem[0] = elem[end];
+            elem[end] = tmp;
+            shiftDown(0, end);
+            end--;
+        }
     }
 }
