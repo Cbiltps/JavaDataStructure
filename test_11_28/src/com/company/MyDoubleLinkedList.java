@@ -16,8 +16,8 @@ class ListNode {
 
 public class MyDoubleLinkedList {
 
-    public ListNode head;// 指向双向链表的头节点
-    public ListNode last;// 指向的是尾巴节点
+    public ListNode head; // 指向双向链表的头节点
+    public ListNode last; // 指向的是尾巴节点
 
     public void display() {
         // 和单链表的打印方式是一样的
@@ -31,7 +31,7 @@ public class MyDoubleLinkedList {
 
     // 得到单链表的长度
     public int size() {
-        int count = 0;//计数器
+        int count = 0; // 计数器
         ListNode cur = this.head;
         while (cur != null) {
             count++;
@@ -99,7 +99,7 @@ public class MyDoubleLinkedList {
         }
     }
 
-    // 任意位置插入(第一个数据节点为0号下标)
+    // 任意位置插入(第一个数据结点为0号下标)
     public void addIndex(int index,int data) {
         ListNode addNode = new ListNode(data);
         if (!isIndex(index)) {
@@ -147,7 +147,7 @@ public class MyDoubleLinkedList {
             if (cur.val == key) {
                 if (cur == head) { // 删除头结点
                     this.head = head.next;
-                    if (head != null) { // 当只有一个节点的时候，head为空，会报错
+                    if (head != null) { // 当只有一个节点的时候, head为空, 会报错
                         this.head.prev = null;
                     }else {
                         this.last = null;// 这样就相当于删了
@@ -164,7 +164,6 @@ public class MyDoubleLinkedList {
             }
             cur = cur.next;
         }
-
     }
 
     // 删除所有值为key的节点
@@ -174,7 +173,7 @@ public class MyDoubleLinkedList {
             if (cur.val == key) {
                 if (cur == head) { // 删除头结点
                     this.head = head.next;
-                    if (head != null) { // 当只有一个节点的时候，head为空，会报错
+                    if (head != null) { // 当只有一个节点的时候, head为空, 会报错
                         this.head.prev = null;
                     }else {
                         this.last = null; // 这样就相当于删了
