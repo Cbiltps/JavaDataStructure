@@ -58,7 +58,7 @@ public class MyDoubleLinkedList {
         if (this.head == null) {
             this.head = addNode;
             this.last = addNode;
-        }else {
+        } else {
             addNode.next = this.head;
             this.head.prev = addNode;
             this.head = addNode;
@@ -71,12 +71,11 @@ public class MyDoubleLinkedList {
         if (this.head == null) {
             this.head = addNode;
             this.last = addNode;
-        }else {
+        } else {
             this.last.next = addNode;
             addNode.prev = this.last;
             this.last = addNode;
         }
-
     }
 
     // 寻找下标位置的结点
@@ -94,22 +93,22 @@ public class MyDoubleLinkedList {
         if (index < 0 || index > size()) {
             System.out.println("位置不合法！");
             return false;
-        }else {
+        } else {
             return true;
         }
     }
 
     // 任意位置插入(第一个数据结点为0号下标)
-    public void addIndex(int index,int data) {
+    public void addIndex(int index, int data) {
         ListNode addNode = new ListNode(data);
         if (!isIndex(index)) {
             return;
         }
         if (index == 0) {
             addFirst(data);
-        }else if(index == size()) {
+        } else if(index == size()) {
             addLast(data);
-        }else {
+        } else {
             ListNode cur = searchIndex(index);
             addNode.next = cur;
             cur.prev.next = addNode;
@@ -149,14 +148,14 @@ public class MyDoubleLinkedList {
                     this.head = head.next;
                     if (head != null) { // 当只有一个节点的时候, head为空, 会报错
                         this.head.prev = null;
-                    }else {
+                    } else {
                         this.last = null;// 这样就相当于删了
                     }
                 }else {
                     cur.prev.next = cur.next;
                     if (cur.next != null) {
                         cur.next.prev = cur.prev;// 删除中间
-                    }else {
+                    } else {
                         this.last = last.prev;// 删除尾巴
                     }
                 }
@@ -175,14 +174,14 @@ public class MyDoubleLinkedList {
                     this.head = head.next;
                     if (head != null) { // 当只有一个节点的时候, head为空, 会报错
                         this.head.prev = null;
-                    }else {
+                    } else {
                         this.last = null; // 这样就相当于删了
                     }
                 }else {
                     cur.prev.next = cur.next;
                     if (cur.next != null) {
                         cur.next.prev = cur.prev; // 删除中间
-                    }else {
+                    } else {
                         this.last = last.prev; // 删除尾巴
                     }
                 }
