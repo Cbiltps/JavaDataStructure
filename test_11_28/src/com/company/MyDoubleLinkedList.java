@@ -123,20 +123,20 @@ public class MyDoubleLinkedList {
 
 //        while (cur != null) {
 //            if (cur.val == key) {
-//                if (cur == head) { //删除的结点是头结点
+//                if (cur == head) { // 删除的结点是头结点
 //                    this.head = head.next;
 //                    this.head.prev = null;
 //                    break;
-//                }else if(cur == last){ //删除的结点是尾巴结点
+//                } else if(cur == last){ // 删除的结点是尾巴结点
 //                    cur.prev.next = cur.next;
 //                    last = last.prev;
 //                    break;
-//                }else { //删除的是中间的结点
+//                } else { // 删除的是中间的结点
 //                    cur.prev.next = cur.next;
 //                    cur.next.prev = cur.prev;
 //                    break;
 //                }
-//            }else {
+//            } else {
 //                cur = cur.next;
 //            }
 //        }
@@ -151,7 +151,7 @@ public class MyDoubleLinkedList {
                     } else {
                         this.last = null;// 这样就相当于删了
                     }
-                }else {
+                } else {
                     cur.prev.next = cur.next;
                     if (cur.next != null) {
                         cur.next.prev = cur.prev;// 删除中间
