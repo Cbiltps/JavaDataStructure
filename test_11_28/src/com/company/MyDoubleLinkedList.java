@@ -149,14 +149,14 @@ public class MyDoubleLinkedList {
                     if (head != null) { // 当只有一个节点的时候, head为空, 会报错
                         this.head.prev = null;
                     } else {
-                        this.last = null;// 这样就相当于删了
+                        this.last = null; // 只有一个结点的时候并且head前移之后, 依旧有一个last指向这个节点, 置空即可
                     }
                 } else {
                     cur.prev.next = cur.next;
                     if (cur.next != null) {
-                        cur.next.prev = cur.prev;// 删除中间
+                        cur.next.prev = cur.prev; // 删除中间
                     } else {
-                        this.last = last.prev;// 删除尾巴
+                        this.last = last.prev; // 删除尾巴
                     }
                 }
                 return;
