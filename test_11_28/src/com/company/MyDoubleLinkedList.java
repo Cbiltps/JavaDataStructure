@@ -1,5 +1,9 @@
 package com.company;
 
+/**
+ * 无头双向链表实现
+ */
+
 class ListNode {
     public int val;
     public ListNode prev;
@@ -10,13 +14,13 @@ class ListNode {
     }
 }
 
-public class MyLinkedList {
+public class MyDoubleLinkedList {
 
-    public ListNode head;//指向双向链表的头节点
-    public ListNode last;//指向的是尾巴节点
+    public ListNode head;// 指向双向链表的头节点
+    public ListNode last;// 指向的是尾巴节点
 
     public void display() {
-        //和单链表的打印方式是一样的
+        // 和单链表的打印方式是一样的
         ListNode cur = this.head;
         while (cur != null) {
             System.out.print(cur.val+" ");
@@ -25,7 +29,7 @@ public class MyLinkedList {
         System.out.println();
     }
 
-    //得到单链表的长度
+    // 得到单链表的长度
     public int size() {
         int count = 0;//计数器
         ListNode cur = this.head;
@@ -36,7 +40,7 @@ public class MyLinkedList {
         return count;
     }
 
-    //查找是否包含关键字key是否在单链表当中
+    // 查找是否包含关键字key是否在单链表当中
     public boolean contains(int key){
         ListNode cur = this.head;
         while (cur != null) {
@@ -48,7 +52,7 @@ public class MyLinkedList {
         return false;
     }
 
-    //头插法
+    // 头插法
     public void addFirst(int data) {
         ListNode addNode = new ListNode(data);
         if (this.head == null) {
@@ -60,7 +64,8 @@ public class MyLinkedList {
             this.head = addNode;
         }
     }
-    //尾插法
+
+    // 尾插法
     public void addLast(int data){
         ListNode addNode = new ListNode(data);
         if (this.head == null) {
@@ -74,7 +79,7 @@ public class MyLinkedList {
 
     }
 
-    //寻找下标位置的结点
+    // 寻找下标位置的结点
     public ListNode searchIndex(int index) {
         ListNode cur = this.head;
         while (index != 0) {
@@ -84,7 +89,7 @@ public class MyLinkedList {
         return cur;
     }
 
-    //判断结点是否合法
+    // 判断结点是否合法
     public boolean isIndex(int index) {
         if (index < 0 || index > size()) {
             System.out.println("位置不合法！");
@@ -94,7 +99,7 @@ public class MyLinkedList {
         }
     }
 
-    //任意位置插入,第一个数据节点为0号下标
+    // 任意位置插入(第一个数据节点为0号下标)
     public void addIndex(int index,int data) {
         ListNode addNode = new ListNode(data);
         if (!isIndex(index)) {
@@ -113,7 +118,7 @@ public class MyLinkedList {
         }
     }
 
-    //删除第一次出现关键字为key的节点
+    // 删除第一次出现关键字为key的节点
     public void remove(int key){
         ListNode cur = this.head;
 
@@ -137,22 +142,22 @@ public class MyLinkedList {
 //            }
 //        }
 
-        //看看更高级的代码！
+        // 看看更高级的代码！
         while (cur != null) {
             if (cur.val == key) {
-                if (cur == head) { //删除头结点
+                if (cur == head) { // 删除头结点
                     this.head = head.next;
-                    if (head != null) { //当只有一个节点的时候，head为空，会报错
+                    if (head != null) { // 当只有一个节点的时候，head为空，会报错
                         this.head.prev = null;
                     }else {
-                        this.last = null;//这样就相当于删了
+                        this.last = null;// 这样就相当于删了
                     }
                 }else {
                     cur.prev.next = cur.next;
                     if (cur.next != null) {
-                        cur.next.prev = cur.prev;//删除中间
+                        cur.next.prev = cur.prev;// 删除中间
                     }else {
-                        this.last = last.prev;//删除尾巴
+                        this.last = last.prev;// 删除尾巴
                     }
                 }
                 return;
@@ -161,24 +166,25 @@ public class MyLinkedList {
         }
 
     }
-    //删除所有值为key的节点
+
+    // 删除所有值为key的节点
     public void removeAllKey(int key){
         ListNode cur = this.head;
         while (cur != null) {
             if (cur.val == key) {
-                if (cur == head) { //删除头结点
+                if (cur == head) { // 删除头结点
                     this.head = head.next;
-                    if (head != null) { //当只有一个节点的时候，head为空，会报错
+                    if (head != null) { // 当只有一个节点的时候，head为空，会报错
                         this.head.prev = null;
                     }else {
-                        this.last = null;//这样就相当于删了
+                        this.last = null; // 这样就相当于删了
                     }
                 }else {
                     cur.prev.next = cur.next;
                     if (cur.next != null) {
-                        cur.next.prev = cur.prev;//删除中间
+                        cur.next.prev = cur.prev; // 删除中间
                     }else {
-                        this.last = last.prev;//删除尾巴
+                        this.last = last.prev; // 删除尾巴
                     }
                 }
             }
@@ -203,7 +209,7 @@ public class MyLinkedList {
 //        last = null;
 //        System.out.println("null");
 
-        //上面是自己写的，看看下面的
+        // 上面是自己写的, 看看下面的
         while (head != null) {
             ListNode headNext = head.next;
             head.next = null;
@@ -215,5 +221,5 @@ public class MyLinkedList {
     }
 }
 
-//注意；检测为空 可以用一个前面讲过的命令 jps jmap -histo:live xxxx > c:\\ xxx.txt
-//看看ListNode的实例个数是不是少了！
+// 注意；检测为空 可以用一个前面讲过的命令 jps jmap -histo:live xxxx > c:\\ xxx.txt
+// 看看ListNode的实例个数是不是少了！
